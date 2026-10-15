@@ -2,6 +2,7 @@ package com.example.paymentprocessor.dto;
 
 import com.example.paymentprocessor.entity.TransactionType;
 import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.UUID;
@@ -9,7 +10,7 @@ import java.util.UUID;
 public class TransactionRequest {
     @NotNull private UUID transactionId;
     @NotNull private UUID userId;
-    @NotNull @DecimalMin("0.01") private BigDecimal amount;
+    @NotNull @DecimalMin("0.01") @Digits(integer = 17, fraction = 2) private BigDecimal amount;
     @NotNull private TransactionType type;
 
     public UUID getTransactionId() { return transactionId; }

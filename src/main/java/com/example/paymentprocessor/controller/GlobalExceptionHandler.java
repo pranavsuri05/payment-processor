@@ -15,4 +15,9 @@ public class GlobalExceptionHandler {
     public ResponseEntity<String> walletNotFound(WalletNotFoundException e) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
     }
+
+    @ExceptionHandler(jakarta.validation.ConstraintViolationException.class)
+    public ResponseEntity<String> constraintViolation(jakarta.validation.ConstraintViolationException e) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+    }
 }
